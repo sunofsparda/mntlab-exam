@@ -1,5 +1,7 @@
-node {
+node("${env.SLAVE}") {
 
-println "hello"
+  stage("Hello"){
+    println "hello"
+  }
 
 }
