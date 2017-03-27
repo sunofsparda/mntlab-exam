@@ -10,6 +10,7 @@ node("${env.SLAVE}") {
     /*
         Update file src/main/resources/build-info.txt with following details:
     */
+    pwd
     echo build artefact
     // cd ${WORKSPACE}
     sh "mvn clean package"
