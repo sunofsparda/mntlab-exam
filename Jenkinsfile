@@ -10,9 +10,7 @@ node("${env.SLAVE}") {
     /*
         Update file src/main/resources/build-info.txt with following details:
     */
-    echo build artefact
-    // cd ${WORKSPACE}
-    //sh "mvn clean package"
+    sh "mvn clean package -DbuildNumber=$BUILD_NUMBER"
   }
 
   stage("Package"){
