@@ -1,22 +1,13 @@
 node("${env.SLAVE}") {
 
   stage('Preparation (Checking out)') {
-    echo "checkout scm"
+    echo "checkout scm" 
     checkout scm
   }
 
   stage("Build"){
     /*
         Update file src/main/resources/build-info.txt with following details:
-        - Build time
-        - Build Machine Name
-        - Build User Name
-        - GIT URL: ${GIT_URL}
-        - GIT Commit: ${GIT_COMMIT}
-        - GIT Branch: ${GIT_BRANCH}
-
-        Simple command to perform build is as follows:
-        $ mvn clean package -DbuildNumber=$BUILD_NUMBER
     */
     echo build artefact
     sh "mvn clean package -DbuildNumber=$BUILD_NUMBER"
