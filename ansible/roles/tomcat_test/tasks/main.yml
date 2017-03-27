@@ -1,0 +1,7 @@
+  - name: sheck service status
+    shell: service tomcat status
+    become: yes
+    become_user: root
+
+  - name: check tomcat service 
+    shell: ps aux | grep tomcat
