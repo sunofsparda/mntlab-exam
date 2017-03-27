@@ -5,7 +5,7 @@
     state: started
 
   tasks:
-  - name: vagrant provision
+    name: vagrant provision
     vagrant: path=../resources/virtualbox/Vagrantfile state={{state}}
     register: vagrant_vars
   - debug: msg={{vagrant_vars}}
