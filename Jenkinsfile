@@ -1,4 +1,4 @@
-node() {
+node("${env.SLAVE}") {
   tool name: 'Maven_3.3.9', type: 'maven'
 
   stage('Preparation (Checking out)') {
@@ -11,7 +11,8 @@ node() {
         Update file src/main/resources/build-info.txt with following details:
     */
     echo build artefact
-    sh "mvn clean package -DbuildNumber=$BUILD_NUMBER"
+    cd ${WORKSPACE}
+    sh "mvn clean package"
   }
 
   stage("Package"){
