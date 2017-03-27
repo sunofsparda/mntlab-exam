@@ -2,6 +2,7 @@ node("${env.SLAVE}") {
 
   stage('Preparation (Checking out)') {
     checkout scm
+    echo checkout scm
   }
 
   stage("Build"){
