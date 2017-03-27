@@ -30,7 +30,8 @@ node("${env.SLAVE}") {
     /*
         use ansible to create VM (with developed vagrant module)
     */
-    sh "echo ansible-playbook createvm.yml ..."
+    sh "ansible-playbook ansible/playbooks/createvm.yml"
+
   }
 
   stage("Provision VM"){
@@ -38,7 +39,7 @@ node("${env.SLAVE}") {
         use ansible to provision VM
         Tomcat and nginx should be installed
     */
-    sh "echo ansible-playbook provisionvm.yml ..."
+    sh "echo ansible-playbook ansible/playbooks/provisionvm.yml ..."
   }
 
   stage("Deploy Artefact"){
@@ -50,7 +51,7 @@ node("${env.SLAVE}") {
         - Deploy User
         - Deployment Job
     */
-    sh "echo ansible-playbook deploy.yml -e artefact=... ..."
+    sh "echo ansible-playbook ansible/playbooks/deploy.yml -e artefact=... ..."
   }
 
   stage("Test Artefact is deployed successfully"){
@@ -62,7 +63,7 @@ node("${env.SLAVE}") {
         - Deploy User
         - Deployment Job
     */
-    sh "echo ansible-playbook application_tests.yml -e artefact=... ..."
+    sh "echo ansible-playbook ansible/playbooks/application_tests.yml -e artefact=... ..."
   }
 
 }

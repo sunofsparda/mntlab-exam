@@ -1,0 +1,19 @@
+- name: Roll out Dev VM
+  hosts: localhost
+  
+  vars:
+    state: started
+
+  tasks:
+  - name: vagrant provision
+    dev: path=../resources/virtualbox/Vagrantfile state={{state}}
+    register: vagrant_vars
+  - debug: msg={{vagrant_vars}}
+  - add_host:
+      name: websvr
+      ansible_host: "{{vagrant_vars.ip}}"
+      ansible_port: "{{vagrant_vars.port}}"
+      ansible_connection: ssh 
+      ansible_user: "{{vagrant_vars.user}}"
+      ansible_ssh_private_key_file: "{{vagrant_vars.key}}"
+    when: vagrant_vars.status == "running"

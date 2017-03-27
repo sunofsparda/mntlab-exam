@@ -1,0 +1,7 @@
+- name: tomcat site
+  hosts: websvr
+  roles:
+    - { role: java}
+    - { role: tomcat}
+    - { role: nginx}
+
