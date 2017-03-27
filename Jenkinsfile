@@ -1,5 +1,9 @@
 node("${env.SLAVE}") {
 
+  stage('Preparation (Checking out)') {
+    checkout scm
+  }
+
   stage("Build"){
     /*
         Update file src/main/resources/build-info.txt with following details:
@@ -13,7 +17,8 @@ node("${env.SLAVE}") {
         Simple command to perform build is as follows:
         $ mvn clean package -DbuildNumber=$BUILD_NUMBER
     */
-    sh "echo build artefact"
+    echo build artefact
+    sh "mvn clean package -DbuildNumber=$BUILD_NUMBER"
   }
 
   stage("Package"){
