@@ -1,7 +1,7 @@
 node("${env.SLAVE}") {
 
   stage('Preparation (Checking out)') {
-    echo checkout scm
+    echo "checkout scm"
     checkout scm
   }
 
