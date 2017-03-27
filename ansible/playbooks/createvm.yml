@@ -10,7 +10,7 @@
       msg: "Launched with option: {{option}}"
 
   - name: vagrant provision
-    vagrant_manager_module: path=../resources/virtualbox/Vagrantfile state={{option}}
+    prov: path=../resources/virtualbox/Vagrantfile state={{option}}
     register: variables
   - debug: msg={{variables}}
   - add_host:
