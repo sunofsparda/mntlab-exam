@@ -1,5 +1,5 @@
 node("${env.SLAVE}") {
-  tool name: 'Maven_3.3.9', type: 'maven'
+  //tool name: 'Maven_3.3.9', type: 'maven'
 
   stage('Preparation (Checking out)') {
     echo "checkout scm" 
@@ -11,7 +11,7 @@ node("${env.SLAVE}") {
         Update file src/main/resources/build-info.txt with following details:
     */
     echo build artefact
-    cd ${WORKSPACE}
+    // cd ${WORKSPACE}
     sh "mvn clean package"
   }
 
