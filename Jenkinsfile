@@ -31,7 +31,7 @@ node("${env.SLAVE}") {
         use ansible to create VM (with developed vagrant module)
     */
     
-    sh "ansible-playbook ansible/playbooks/createvm.yml"
+    sh "cd ansible/playbooks/ && ansible-playbook createvm.yml -e WORKSPACE=${WORKSPACE}"
 
   }
 

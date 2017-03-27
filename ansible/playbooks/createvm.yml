@@ -6,7 +6,7 @@
 
   tasks:
   - name: vagrant provision
-    prov: path=../resources/virtualbox/Vagrantfile state={{state}}
+    prov: path=../resources/virtualbox/Vagrantfile state={{state}} WORKSPACE=$WORKSPACE
     register: vagrant_vars
   - debug: msg='{{vagrant_vars}}'
   - add_host:
