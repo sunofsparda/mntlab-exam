@@ -1,19 +1,23 @@
-- name: node
+- name: webserver provision
   hosts: localhost
   
   vars:
-    state: started
+    option: started
 
   tasks:
+  - name: debug
+    debug: 
+      msg: "Launched with option: {{option}}"
+
   - name: vagrant provision
-    prov: path=../resources/virtualbox/Vagrantfile state={{state}} WORKSPACE=$WORKSPACE
-    register: vagrant_vars
-  - debug: msg='{{vagrant_vars}}'
+    vagrant_manager_module: path=../resources/virtualbox/Vagrantfile state={{option}}
+    register: variables
+  - debug: msg={{variables}}
   - add_host:
-      name: websvr
-      ansible_host: "{{vagrant_vars.ip}}"
-      ansible_port: "{{vagrant_vars.port}}"
-      ansible_connection: ssh 
-      ansible_user: "{{vagrant_vars.user}}"
-      ansible_ssh_private_key_file: "{{vagrant_vars.key}}"
-    when: vagrant_vars.status == "running"
+      name: web_server
+      ansible_host: "{{variables.ip}}"
+      ansible_port: "{{variables.port}}"
+      ansible_user: "{{variables.user}}"
+      ansible_connection: "ssh"       
+      ansible_ssh_private_key_file: "{{variables.key}}"
+    when: variables.status == "running"

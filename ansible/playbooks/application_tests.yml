@@ -1,7 +1,7 @@
 - name: check site
   hosts: websvr
   roles:
-    - { role: java_test}
-    - { role: tomcat_test}
-    - { role: nginx_test}
+    - java_test
+    - tomcat_test
+    - nginx_test
 

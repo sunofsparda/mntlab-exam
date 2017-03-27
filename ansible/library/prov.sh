@@ -6,11 +6,10 @@ function vagrant_up
     { 
     status=$(vagrant status | grep default | awk '{print $2}')
     if [ "$status" == "running" ]; then
-        get_vars    
+        get_vars
         printf '{"ip": "%s", "port": "%s", "user": "%s", "key": "%s", "status": "%s", "os_name": "%s", "ram": "%s"}' "$ip" "$port" "$user" "$key" "$status" "$os_name" "$ram"
         exit 0
     else
-        cd ~cm/ansible/mntlab-exam/ansible/resources/virtualbox/
         vagrant up &>/dev/null
         get_vars
         printf '{"ip": "%s", "port": "%s", "user": "%s", "key": "%s", "status": "%s", "os_name": "%s", "ram": "%s"}' "$ip" "$port" "$user" "$key" "$status" "$os_name" "$ram"
@@ -68,8 +67,8 @@ fi
 
 
 if [ ! -f "$path" ]; then
-	printf '{"failed": true, "msg": "Vagrantfile does not exist"}'
-	exit 1
+    printf '{"failed": true, "msg": "Vagrantfile does not exist"}'
+    exit 1
 fi 
 
 
@@ -77,7 +76,7 @@ fi
 # OUTPUT PARAMETERS
 function get_vars
 {
-	ip=$(vagrant ssh-config | grep HostName | awk '{print $2}')
+    ip=$(vagrant ssh-config | grep HostName | awk '{print $2}')
     port=$(vagrant ssh-config | grep Port | awk '{print $2}')
     user=$(vagrant ssh-config | grep -w "User" | awk '{print $2}' 2>/dev/null)
     key=$(vagrant ssh-config | grep IdentityFile | awk '{print $2}' 2>/dev/null)

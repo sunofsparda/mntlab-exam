@@ -1,5 +1,5 @@
 node("${env.SLAVE}") {
-  tool name: 'Maven_3.3.9', type: 'maven'
+tool name: 'Maven_3.3.9', type: 'maven'
 
   stage('Preparation (Checking out)') {
     echo "checkout scm" 
@@ -52,7 +52,7 @@ node("${env.SLAVE}") {
         - Deploy User
         - Deployment Job
     */
-    sh "echo ansible-playbook ansible/playbooks/deploy.yml -e artefact=... ..."
+    sh "echo ansible-playbook deploy.yml -e artefact=... ..."
   }
 
   stage("Test Artefact is deployed successfully"){
@@ -64,7 +64,7 @@ node("${env.SLAVE}") {
         - Deploy User
         - Deployment Job
     */
-    sh "echo ansible-playbook ansible/playbooks/application_tests.yml -e artefact=... ..."
+    sh "echo ansible-playbook application_tests.yml -e artefact=... ..."
   }
 
 }
