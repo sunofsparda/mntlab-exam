@@ -18,6 +18,12 @@ node("${env.SLAVE}") {
         use tar tool to package built war file into *.tar.gz package
     */
     sh "echo package artefact"
+    echo 'Creating new artifact'
+      sh '''
+          cp ${WORKSPACE}/target/mnt-exam.war ${WORKSPACE}/mnt-exam.war
+          tar -czf mnt-exam.war.tar.gz mnt-exam.war
+      ''';
+    archiveArtifacts artifacts: 'mnt-exam.war.tar.gz', onlyIfSuccessful: true
   }
 
   stage("Roll out Dev VM"){
