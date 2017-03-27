@@ -8,7 +8,7 @@
     name: vagrant provision
     vagrant: path=../resources/virtualbox/Vagrantfile state={{state}}
     register: vagrant_vars
-  - debug: "msg={{vagrant_vars}}"
+    debug: "msg={{vagrant_vars}}"
   - add_host:
       name: websvr
       ansible_host: "{{vagrant_vars.ip}}"
