@@ -2,7 +2,7 @@
 mkdir -p ansible/{inventory,reports,playbooks,roles,resources,library,callback_plugins}
 mkdir -p ansible/reports/{day1,day2,day3,day4,day-Final}
 mkdir -p ansible/resources/virtualbox
-touch ansible/playbooks/{ansible.cfg,application_tests.yml,deploy.yml,createvm.yml,provisionvm.yml}
+touch ansible/playbooks/{ansible.cfg,application_tests.yml,deploy.yml,createvm.yml,provisionvm.yml} 
 
 
   # ansible/                    #  Ansible project directory

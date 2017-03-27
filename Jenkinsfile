@@ -1,4 +1,5 @@
 node("${env.SLAVE}") {
+  tool name: 'maven_3.3.9', type: 'maven'
 
   stage('Preparation (Checking out)') {
     echo "checkout scm" 
