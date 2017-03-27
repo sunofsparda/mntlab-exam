@@ -1,4 +1,4 @@
-node("${env.SLAVE}") {
+node() {
   tool name: 'Maven_3.3.9', type: 'maven'
 
   stage('Preparation (Checking out)') {
