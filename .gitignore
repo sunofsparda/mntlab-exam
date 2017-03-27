@@ -1,7 +1,0 @@
-**/*.retry
-**/soft/
-**/*.box
-**/.vagrant/
-documentaion/
-/d*test/
-**/__pycache__/
