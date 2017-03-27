@@ -1,4 +1,4 @@
-- name: Roll out Dev VM
+  name: Roll out Dev VM
   hosts: localhost
   
   vars:
