@@ -11,13 +11,13 @@
 
   - name: vagrant provision
     prov: path=../resources/virtualbox/Vagrantfile state={{option}}
-    register: variables
-  - debug: msg={{variables}}
+    register: vagrant_vars
+  - debug: msg={{vagrant_vars}}
   - add_host:
       name: web_server
-      ansible_host: "{{variables.ip}}"
-      ansible_port: "{{variables.port}}"
-      ansible_user: "{{variables.user}}"
+      ansible_host: "{{vagrant_vars.ip}}"
+      ansible_port: "{{vagrant_vars.port}}"
+      ansible_user: "{{vagrant_vars.user}}"
       ansible_connection: "ssh"       
-      ansible_ssh_private_key_file: "{{variables.key}}"
-    when: variables.status == "running"
+      ansible_ssh_private_key_file: "{{vagrant_vars.key}}"
+    when: vagrant_vars.status == "running"

@@ -7,16 +7,10 @@ tool name: 'Maven_3.3.9', type: 'maven'
   }
 
   stage("Build"){
-    /*
-        Update file src/main/resources/build-info.txt with following details:
-    */
     sh "mvn clean package -DbuildNumber=$BUILD_NUMBER"
   }
 
   stage("Package"){
-    /*
-        use tar tool to package built war file into *.tar.gz package
-    */
     sh "echo package artefact"
     echo 'Creating new artifact'
       sh '''
@@ -27,19 +21,10 @@ tool name: 'Maven_3.3.9', type: 'maven'
   }
 
   stage("Roll out Dev VM"){
-    /*
-        use ansible to create VM (with developed vagrant module)
-    */
-    
     sh "cd ansible/playbooks/ && ansible-playbook createvm.yml -e WORKSPACE=${WORKSPACE}"
-
   }
 
   stage("Provision VM"){
-    /*
-        use ansible to provision VM
-        Tomcat and nginx should be installed
-    */
     sh "echo ansible-playbook ansible/playbooks/provisionvm.yml ..."
   }
 
