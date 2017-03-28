@@ -1,9 +1,14 @@
-# Vagrant
+### Vagrant
 
 .vagrant/
 
 
-# Java
+### Ansible
+
+*.retry
+
+
+### Java
 
 target/
 
